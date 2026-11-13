@@ -1,10 +1,11 @@
 # Changelog
 
-## Unreleased
+## 2.2.0
 
 - Personal Scroll Tooltips Without Locking setting (on by default): the mouse wheel scrolls a
   long tooltip while it is showing, instead of the sheet underneath, so it no longer has to be
   locked with a middle-click first.
+- Module title is now "D&D 5e Quality of Life".
 
 ## 2.1.0
 
