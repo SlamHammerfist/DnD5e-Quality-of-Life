@@ -157,3 +157,42 @@ body.dst-colorblind * {
   gap: 6px;
   margin-block-end: 6px;
 }
+
+/* -------------------------------------------- */
+/*  Advantage Highlight                         */
+/*  Uses dnd5e's success/failure colours, so    */
+/*  Color Blind Mode turns them blue/orange.    */
+/* -------------------------------------------- */
+
+.roll-configuration .dialog-buttons button.dst-adv-default {
+  --dst-adv-color: var(--dnd5e-color-gold, #9f9275);
+  border: 2px solid var(--dst-adv-color);
+  box-shadow: 0 0 6px var(--dst-adv-color);
+  font-weight: bold;
+}
+.roll-configuration .dialog-buttons button.dst-adv-advantage {
+  --dst-adv-color: var(--dnd5e-color-success, #18520b);
+}
+.roll-configuration .dialog-buttons button.dst-adv-disadvantage {
+  --dst-adv-color: var(--dnd5e-color-failure, #aa0200);
+}
+
+.roll-configuration .dst-adv-reason {
+  --dst-adv-color: var(--dnd5e-color-gold, #9f9275);
+  margin: 0 0 6px;
+  padding: 4px 8px;
+  border-inline-start: 3px solid var(--dst-adv-color);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--dst-adv-color) 12%, transparent);
+  font-size: var(--font-size-12, 12px);
+  line-height: 1.3;
+}
+.roll-configuration .dst-adv-reason i {
+  color: var(--dst-adv-color);
+}
+.roll-configuration .dst-adv-reason.dst-adv-advantage {
+  --dst-adv-color: var(--dnd5e-color-success, #18520b);
+}
+.roll-configuration .dst-adv-reason.dst-adv-disadvantage {
+  --dst-adv-color: var(--dnd5e-color-failure, #aa0200);
+}

@@ -16,6 +16,7 @@
  *   container-rolls.mjs   Container Item Rolls
  *   journal-tab.mjs       Enable Journal Tab
  *   sheet-tweaks.mjs      Disable Item Tooltips, Header Collapse, Item Name Expands
+ *   advantage-reasons.mjs Advantage Highlight
  * Hide Chat Enrichment Menu and Remove Electrum are CSS only (see the stylesheet).
  */
 
@@ -30,6 +31,7 @@ import { registerContainerRolls } from "./container-rolls.mjs";
 import { registerJournalTab } from "./journal-tab.mjs";
 import { registerSheetTweaks } from "./sheet-tweaks.mjs";
 import { applyColorBlind, registerColorBlind } from "./colorblind.mjs";
+import { registerAdvantageReasons } from "./advantage-reasons.mjs";
 
 /** Run one feature's setup without letting a failure stop the others. */
 function safely(name, fn) {
@@ -52,6 +54,7 @@ Hooks.once("init", () => {
   safely("Journal Tab", registerJournalTab);
   safely("Sheet Tweaks", registerSheetTweaks);
   safely("Color Blind Mode", registerColorBlind);
+  safely("Advantage Highlight", registerAdvantageReasons);
 });
 
 Hooks.once("ready", () => {

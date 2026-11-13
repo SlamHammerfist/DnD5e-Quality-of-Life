@@ -21,6 +21,7 @@ on/off switch in **Configure Settings → DnD5e QoL**, and **Enable Module** tur
 
 | Setting | What it does |
 | --- | --- |
+| Advantage Highlight | In the d20 roll dialog, the Advantage / Normal / Disadvantage button that applies stays highlighted, with a line naming the reason (effects, conditions, stealthy-armour penalty, feats, effect rules). Shows when advantage and disadvantage cancel out too. |
 | Chat Card Button Labels | Shows text next to the icons on chat card buttons. **Configure Labels** picks which buttons. |
 | Color Blind Mode | Red-green colour-blind-safe colours: blue for good (hits, successes, healing, full health), orange for bad (misses, failures, damage, low health). Covers chat cards, sheets and token health bars. |
 | Container Item Rolls | Click a consumable's name in a container to use it. |

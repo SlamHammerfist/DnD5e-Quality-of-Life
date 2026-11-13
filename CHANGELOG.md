@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Personal Advantage Highlight setting: the d20 roll dialog keeps the Advantage, Normal or
+  Disadvantage button highlighted and shows why (e.g. "Disadvantage: Poisoned, Chain Mail"),
+  including when advantage and disadvantage cancel out or a mode is forced or blocked.
+
 ## 2.0.0
 
 Rebuilt from scratch for Foundry VTT v14 and D&D 5e 6.0.
