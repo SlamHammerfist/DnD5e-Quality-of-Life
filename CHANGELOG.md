@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Personal Scroll Tooltips Without Locking setting (on by default): the mouse wheel scrolls a
+  long tooltip while it is showing, instead of the sheet underneath, so it no longer has to be
+  locked with a middle-click first.
+
 ## 2.1.0
 
 - Personal Advantage Highlight setting: the d20 roll dialog keeps the Advantage, Normal or

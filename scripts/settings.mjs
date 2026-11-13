@@ -152,6 +152,12 @@ const SETTINGS = {
     hint: "Clicking an item name expands or collapses its details directly on the sheet.",
     scope: "user",
     default: false
+  },
+  scrollTooltips: {
+    name: "Scroll Tooltips Without Locking",
+    hint: "While a long tooltip is showing (such as an item or spell description), the mouse wheel scrolls the tooltip instead of the sheet underneath, so you don't have to lock it with a middle-click first.",
+    scope: "user",
+    default: true
   }
 };
 

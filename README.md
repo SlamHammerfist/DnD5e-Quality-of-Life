@@ -29,6 +29,7 @@ on/off switch in **Configure Settings → DnD5e QoL**, and **Enable Module** tur
 | Enable Journal Tab | Adds a Journal tab to character and NPC sheets for your own private notes. |
 | Header Collapse | Adds a toggle to each item section header. Collapsed sections stay collapsed. |
 | Item Name Expands | Clicking an item's name opens its details instead of using it. Click the picture to use it. |
+| Scroll Tooltips Without Locking | The mouse wheel scrolls a long tooltip (item and spell descriptions) while it is showing, so you don't have to lock it with a middle-click first. |
 
 ## Requirements
 
