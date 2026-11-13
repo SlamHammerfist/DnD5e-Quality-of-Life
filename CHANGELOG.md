@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.0
+
+- GM Auto Kill NPCs setting (on by default): an NPC that drops to 0 hit points is marked dead
+  (token overlay) and defeated in combat; healing it above 0 hit points removes both.
+
 ## 2.2.0
 
 - Personal Scroll Tooltips Without Locking setting (on by default): the mouse wheel scrolls a
