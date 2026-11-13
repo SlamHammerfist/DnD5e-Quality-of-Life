@@ -1,10 +1,11 @@
 # Changelog
 
-## Unreleased
+## 2.1.0
 
 - Personal Advantage Highlight setting: the d20 roll dialog keeps the Advantage, Normal or
   Disadvantage button highlighted and shows why (e.g. "Disadvantage: Poisoned, Chain Mail"),
   including when advantage and disadvantage cancel out or a mode is forced or blocked.
+- Module links now point to the renamed GitHub repository, DnD5e-Quality-of-Life.
 
 ## 2.0.0
 
