@@ -1,0 +1,159 @@
+/* DnD5e QoL */
+
+/* -------------------------------------------- */
+/*  Hide Prices (Players)                       */
+/*  Backup for any price cell still drawn.      */
+/* -------------------------------------------- */
+
+body.dst-hide-prices .dnd5e2 :is(.item-price, [data-column-id="price"]) {
+  display: none !important;
+}
+
+/* -------------------------------------------- */
+/*  Hide Chat Enrichment Menu (Players)         */
+/* -------------------------------------------- */
+
+body.dst-hide-chat-menu #chat-message :is(menu.editor-menu, .menu-container) {
+  display: none !important;
+}
+
+/* -------------------------------------------- */
+/*  Remove Electrum                             */
+/* -------------------------------------------- */
+
+body.dst-no-electrum .dnd5e2 .currency label:has(:is(i.currency.ep, input[name$="currency.ep"])),
+body.dst-no-electrum .dnd5e2 .form-group:has(input[name$="currency.ep"]) {
+  display: none !important;
+}
+
+/* -------------------------------------------- */
+/*  Color Blind Mode (red-green safe)           */
+/*  Blue = good, orange = bad.                  */
+/*  Set on every element so it beats the        */
+/*  colours themes set further down the page.   */
+/* -------------------------------------------- */
+
+body.dst-colorblind,
+body.dst-colorblind * {
+  /* Hits, successes, crits / misses, failures, fumbles */
+  --dnd5e-color-success: #0060a8 !important;
+  --dnd5e-color-success-background: #d4e5f5 !important;
+  --dnd5e-color-success-critical: #0072b2 !important;
+  --dnd5e-color-failure: #a34400 !important;
+  --dnd5e-color-failure-background: #fde3cc !important;
+  --dnd5e-color-failure-critical: #d55e00 !important;
+  --color-level-success: #3a8fd8 !important;
+  --color-level-success-border: #3a8fd8 !important;
+  --color-level-error: #e66100 !important;
+  --color-level-error-border: #e66100 !important;
+
+  /* Health bars on sheets */
+  --dnd5e-color-hp-1: #0b3c6b !important;
+  --dnd5e-color-hp-2: #3a8fd8 !important;
+  --dnd5e-color-hp-3: #1f5f9e !important;
+
+  /* Damage and healing in chat */
+  --dnd5e-color-application-damage: #d55e00 !important;
+  --dnd5e-color-application-healing: #0072b2 !important;
+  --dnd5e-color-red: #d55e00 !important;
+  --dnd5e-color-green: #0060a8 !important;
+}
+
+/* -------------------------------------------- */
+/*  Header Collapse                             */
+/* -------------------------------------------- */
+
+.dnd5e2 .items-section .items-header .dst-collapse {
+  flex: 0 0 auto;
+  inline-size: 18px;
+  margin-inline-end: 4px;
+  color: var(--dnd5e-color-gold, currentColor);
+  font-size: var(--font-size-11);
+  cursor: pointer;
+}
+.dnd5e2 .items-section .items-header .dst-collapse i {
+  transition: transform 150ms ease;
+}
+.dnd5e2 .items-section.dst-collapsed .items-header .dst-collapse i {
+  transform: rotate(-90deg);
+}
+.dnd5e2 .items-section.dst-collapsed > .item-list {
+  display: none;
+}
+
+/* -------------------------------------------- */
+/*  Item Name Expands                           */
+/* -------------------------------------------- */
+
+.dnd5e2 .item-row .item-name .name .title {
+  cursor: pointer;
+}
+
+/* -------------------------------------------- */
+/*  Journal Tab                                 */
+/* -------------------------------------------- */
+
+.dnd5e2 .tab.dst-journal.active {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dnd5e2 .tab.dst-journal h3.icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dnd5e2 .tab.dst-journal .dst-journal-hint {
+  margin-inline-start: auto;
+  font-size: var(--font-size-11);
+  font-weight: normal;
+  color: var(--color-text-secondary);
+}
+.dnd5e2 .tab.dst-journal .dst-journal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 400px;
+}
+.dnd5e2 .tab.dst-journal prose-mirror {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dnd5e2 .tab.dst-journal prose-mirror .editor-content {
+  flex: 1;
+  min-block-size: 350px;
+  padding: 8px;
+  cursor: text;
+}
+.dnd5e2 .tab.dst-journal prose-mirror .ProseMirror {
+  min-block-size: 330px;
+  outline: none;
+}
+
+/* -------------------------------------------- */
+/*  Sort Spells by Level                        */
+/* -------------------------------------------- */
+
+.compendium-browser .item-list > li.dst-level-header {
+  list-style: none;
+  padding: 6px 8px 2px;
+  border-block-end: 1px solid var(--dnd5e-color-gold, var(--color-border));
+}
+.compendium-browser .item-list > li.dst-level-header h4 {
+  margin: 0;
+  font-family: var(--dnd5e-font-roboto-condensed, inherit);
+  text-transform: uppercase;
+  font-size: var(--font-size-12);
+  color: var(--dnd5e-color-gold, inherit);
+}
+
+/* -------------------------------------------- */
+/*  Configure Labels dialog                     */
+/* -------------------------------------------- */
+
+.dst-button-labels-config .dst-quick-pick {
+  display: flex;
+  gap: 6px;
+  margin-block-end: 6px;
+}

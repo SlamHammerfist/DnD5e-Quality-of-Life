@@ -1,0 +1,15 @@
+<div class="dst-button-labels">
+    <p class="hint">Choose which chat card buttons show a text label next to their icon.</p>
+    <div class="dst-quick-pick">
+        <button type="button" data-action="all"><i class="fa-solid fa-square-check"></i> All</button>
+        <button type="button" data-action="none"><i class="fa-regular fa-square"></i> None</button>
+    </div>
+    {{#each actions}}
+    <div class="form-group">
+        <label for="dst-label-{{ key }}">{{ label }}</label>
+        <div class="form-fields">
+            <input type="checkbox" id="dst-label-{{ key }}" name="{{ key }}" {{ checked checked }}>
+        </div>
+    </div>
+    {{/each}}
+</div>
