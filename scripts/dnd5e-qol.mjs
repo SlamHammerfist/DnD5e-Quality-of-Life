@@ -9,6 +9,7 @@
  *   button-labels.mjs     the Configure Labels dialog
  *   roll-labels.mjs       Label Roll Bonuses
  *   coin-drops.mjs        NPC Coin Drops
+ *   auto-defeat.mjs       Auto Kill NPCs
  *   table-sort.mjs        Roll Table Alphabetical Sort
  *   familiar-browser.mjs  Find Familiar Browser
  *   spell-sort.mjs        Sort Spells by Level
@@ -24,6 +25,7 @@
 import { applyBodyClasses, applyButtonLabels, registerSettings } from "./settings.mjs";
 import { registerRollLabels } from "./roll-labels.mjs";
 import { registerCoinDrops } from "./coin-drops.mjs";
+import { registerAutoDefeat } from "./auto-defeat.mjs";
 import { registerTableSort } from "./table-sort.mjs";
 import { registerFamiliarBrowser } from "./familiar-browser.mjs";
 import { registerSpellSort } from "./spell-sort.mjs";
@@ -48,6 +50,7 @@ Hooks.once("init", () => {
   registerSettings();
   safely("Label Roll Bonuses", registerRollLabels);
   safely("NPC Coin Drops", registerCoinDrops);
+  safely("Auto Kill NPCs", registerAutoDefeat);
   safely("Roll Table Alphabetical Sort", registerTableSort);
   safely("Find Familiar Browser", registerFamiliarBrowser);
   safely("Sort Spells by Level", registerSpellSort);

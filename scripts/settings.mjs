@@ -73,6 +73,12 @@ const SETTINGS = {
     scope: "world",
     default: true
   },
+  autoKillNpcs: {
+    name: "Auto Kill NPCs",
+    hint: "When an NPC drops to 0 hit points it is marked dead (shown over its token) and marked defeated in combat. Healing it above 0 hit points removes both.",
+    scope: "world",
+    default: true
+  },
   removeElectrum: {
     name: "Remove Electrum",
     hint: "Hides electrum currency from character sheets.",
