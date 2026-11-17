@@ -132,20 +132,31 @@ body.dst-colorblind * {
 }
 
 /* -------------------------------------------- */
-/*  Sort Spells by Level                        */
+/*  Sort Spells by Level / Monsters by CR       */
 /* -------------------------------------------- */
 
+/* Matches the dnd5e card header: red gradient, white Roboto Slab, gold border. */
 .compendium-browser .item-list > li.dst-level-header {
   list-style: none;
-  padding: 6px 8px 2px;
-  border-block-end: 1px solid var(--dnd5e-color-gold, var(--color-border));
+  margin-block: 6px 2px;
+  background: linear-gradient(to right,
+    var(--dnd5e-card-header-1, #491d25), var(--dnd5e-card-header-2, #311b1f));
+  color: white;
+  border-radius: 3px;
+  border-block-end: var(--dnd5e-border-gold, 1px solid #9f9275);
+}
+.compendium-browser .item-list > li.dst-level-header:first-child {
+  margin-block-start: 0;
 }
 .compendium-browser .item-list > li.dst-level-header h4 {
+  border: none;
   margin: 0;
-  font-family: var(--dnd5e-font-roboto-condensed, inherit);
-  text-transform: uppercase;
-  font-size: var(--font-size-12);
-  color: var(--dnd5e-color-gold, inherit);
+  padding: 0.35rem 0.5rem;
+  color: inherit;
+  font-family: var(--dnd5e-font-roboto-slab, inherit);
+  font-size: var(--font-size-13);
+  font-weight: bold;
+  line-height: 1;
 }
 
 /* -------------------------------------------- */

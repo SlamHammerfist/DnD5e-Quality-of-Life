@@ -17,6 +17,7 @@ on/off switch in **Configure Settings → DnD5e QoL**, and **Enable Module** tur
 | Roll Table Alphabetical Sort | Adds a sort button to roll table sheets. Results go A–Z (ignoring a leading "The") and ranges are rebuilt from weights. |
 | Find Familiar Browser | Find Familiar and Wild Companion open the compendium browser with the 2024 Monster Manual ticked. |
 | Sort Spells by Level | Spell results in the compendium browser are grouped by level with a header for each. |
+| Sort Monsters by CR | Monster results in the compendium browser are grouped by Challenge Rating with a header for each. |
 
 ## Personal settings (each player chooses)
 

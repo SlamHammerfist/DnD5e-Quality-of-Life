@@ -105,6 +105,13 @@ const SETTINGS = {
     default: true,
     onChange: () => refreshBrowsers()
   },
+  monsterCrSort: {
+    name: "Sort Monsters by CR",
+    hint: "Monster results in the compendium browser are grouped by Challenge Rating (lowest first, monsters with no CR last) and listed alphabetically within each CR, with a header above each CR.",
+    scope: "world",
+    default: true,
+    onChange: () => refreshBrowsers()
+  },
   advantageHighlight: {
     name: "Advantage Highlight",
     hint: "In the d20 roll dialog, the Advantage, Normal or Disadvantage button that applies stays highlighted (green, gold or red; blue and orange in Color Blind Mode) even when you click into another field, and a line above the buttons names the reason, e.g. \"Disadvantage: Poisoned, Chain Mail\".",

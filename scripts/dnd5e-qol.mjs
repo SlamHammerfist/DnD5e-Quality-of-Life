@@ -12,7 +12,7 @@
  *   auto-defeat.mjs       Auto Kill NPCs
  *   table-sort.mjs        Roll Table Alphabetical Sort
  *   familiar-browser.mjs  Find Familiar Browser
- *   spell-sort.mjs        Sort Spells by Level
+ *   spell-sort.mjs        Sort Spells by Level, Sort Monsters by CR
  *   hide-prices.mjs       Hide Prices (Players)
  *   container-rolls.mjs   Container Item Rolls
  *   journal-tab.mjs       Enable Journal Tab
@@ -53,7 +53,7 @@ Hooks.once("init", () => {
   safely("Auto Kill NPCs", registerAutoDefeat);
   safely("Roll Table Alphabetical Sort", registerTableSort);
   safely("Find Familiar Browser", registerFamiliarBrowser);
-  safely("Sort Spells by Level", registerSpellSort);
+  safely("Sort Spells by Level / Monsters by CR", registerSpellSort);
   safely("Hide Prices", registerHidePrices);
   safely("Container Item Rolls", registerContainerRolls);
   safely("Journal Tab", registerJournalTab);
