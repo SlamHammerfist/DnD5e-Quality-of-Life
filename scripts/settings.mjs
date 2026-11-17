@@ -63,7 +63,7 @@ const SETTINGS = {
   },
   labelRollBonuses: {
     name: "Label Roll Bonuses",
-    hint: "Labels each bonus in a chat card roll with its source (ability, proficiency, or the name of the active effect granting it), so an attack reads \"1d20 + 4 [Str] + 2 [Prof]\" instead of \"1d20 + 4 + 2\". The labels also appear in the expanded roll breakdown. Applies to whoever makes the roll.",
+    hint: "Labels each bonus in a roll with its source (ability, proficiency, the item, or the name of the active effect granting it), so an attack reads \"1d20 + 4 [Str] + 2 [Prof]\" and its damage \"1d12 + 4 [Str]\". Applies to every roll type, including damage and healing. The labels show in the roll dialog and also appear in the expanded roll breakdown. Applies to whoever makes the roll.",
     scope: "world",
     default: true
   },
