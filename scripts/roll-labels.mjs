@@ -77,6 +77,13 @@ function labelParts(process, config) {
     }
     const key = match[1];
 
+    // A situational bonus that already has its own labels, e.g. "1d4[Bless]", is left alone:
+    // adding "[Situational]" after it would make "1d4[Bless][Situational]", which can't be rolled.
+    if ( (key === "situational") && /\[/.test(String(config.data?.situational ?? "")) ) {
+      parts.push(part);
+      continue;
+    }
+
     // Bonuses from effects: split into pieces and name each after the effect it came from.
     if ( EFFECT_BONUS_PARTS.has(key) ) {
       const value = foundry.utils.getProperty(config.data ?? {}, key);
