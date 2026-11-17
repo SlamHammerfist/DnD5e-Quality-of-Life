@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.5.0
+
+- Label Roll Bonuses now works on every roll, including damage, healing and recharge rolls, not
+  just d20 rolls; a greataxe hit reads `1d12 + 4[Str]`. Labels can never change a roll's damage
+  type.
+- Damage chat cards list each labelled flat bonus on its own row in the roll breakdown, the same
+  way attack rolls show `STR +4` and `PROF +3`.
+- Bonuses from active effects are named after the effect again instead of just "Bonus" (broken
+  since dnd5e 6.0). Effects on the item being rolled are included too.
+
 ## 2.4.0
 
 - GM Sort Monsters by CR setting (on by default): monster results in the compendium browser are

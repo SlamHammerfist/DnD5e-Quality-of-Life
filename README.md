@@ -10,7 +10,7 @@ on/off switch in **Configure Settings → DnD5e QoL**, and **Enable Module** tur
 | Enable Module | Master switch. When off, every setting below is ignored for everyone. |
 | Hide Prices (Players) | Hides item prices on character, NPC and container sheets for players. |
 | Hide Chat Enrichment Menu (Players) | Removes the formatting menu above the chat box for players. |
-| Label Roll Bonuses | Tags each bonus in a d20 roll with its source, e.g. `1d20 + 4[Str] + 2[Prof] + 1d4[Bless]`. Shows in the roll breakdown too. |
+| Label Roll Bonuses | Tags each bonus in a roll with its source, e.g. `1d20 + 4[Str] + 2[Prof] + 1d4[Bless]`, on every roll type including damage and healing. Shows in the roll breakdown too, with each labelled bonus on its own row. |
 | NPC Coin Drops | Unlinked NPC tokens get coins from the DMG individual treasure tables when placed, based on CR. |
 | Auto Kill NPCs | NPCs at 0 HP get the dead overlay and are marked defeated in combat. Healing above 0 removes both. |
 | Remove Electrum | Hides electrum on sheets. NPC Coin Drops pays electrum as silver instead. |
