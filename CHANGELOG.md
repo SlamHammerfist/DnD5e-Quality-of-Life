@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.4.0
+
+- GM Sort Monsters by CR setting (on by default): monster results in the compendium browser are
+  ordered by Challenge Rating (no CR last), then by name, with a header above each CR.
+- Sort Spells by Level headers now match the dnd5e chat card header (red bar, gold border).
+- Label Roll Bonuses no longer breaks a situational bonus that already has its own label, such as
+  `1d4[Bless]` typed in or added by Roll Messages; the bonus was being dropped from the roll.
+
 ## 2.3.0
 
 - GM Auto Kill NPCs setting (on by default): an NPC that drops to 0 hit points is marked dead
