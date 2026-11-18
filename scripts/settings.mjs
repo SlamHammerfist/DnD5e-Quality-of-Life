@@ -114,7 +114,7 @@ const SETTINGS = {
   },
   retargetRolls: {
     name: "Change Target After Roll",
-    hint: "Adds a crosshairs button to the targets row of attack, damage and healing chat cards. Target the right tokens and click it to swap the card's targets for them, without rolling again. Attack cards re-check hit or miss against the new targets, and the damage tray applies to them. Only the person who rolled and the GM see the button.",
+    hint: "Click the bullseye icon on an attack chat card's targets row to swap the card's targets for the tokens you have targeted now, without rolling again; with nothing targeted it clears them. Hit or miss is re-checked against the new targets, and damage from that attack (already rolled or rolled later) applies to them too. Works for the person who rolled and the GM.",
     scope: "world",
     default: true
   },

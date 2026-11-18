@@ -1,34 +1,38 @@
 /**
- * Change Target After Roll: adds a crosshairs button to the targets row of attack, damage and
- * healing chat cards. Clicking it replaces the targets stored on that card with the tokens you
- * have targeted right now, so a roll made against the wrong token (or no token) can be fixed
- * without rolling again. Attack cards re-check hit or miss against the new targets' AC, and the
- * damage tray's "Targeted" mode applies to the new targets.
+ * Change Target After Roll: click the bullseye icon on an attack chat card's targets row to replace
+ * the card's targets with the tokens you have targeted right now, so an attack made against the
+ * wrong token (or no token) can be fixed without rolling again. Hit or miss is re-checked against
+ * the new targets' AC. Clicking it with nothing targeted clears the card's targets.
  *
- * Only shown to people who can edit the message (its author and the GM).
+ * The new targets are also copied to the item use card the attack came from (so damage rolled from
+ * it afterwards uses them) and to any damage or healing cards already rolled from that same use (so
+ * their apply tray's "Targeted" mode applies to the new targets).
+ *
+ * It isn't done automatically when you target a token, because targeting the next enemy before your
+ * next attack would then rewrite the previous attack.
+ *
+ * Only works for people who can edit the message (its author and the GM).
  */
 
 import { isOn } from "./settings.mjs";
 
-/** Message types whose stored targets can be changed. */
-const TYPES = new Set(["attack", "damage", "healing"]);
+/** Cards rolled from the same use that follow the attack's new targets. */
+const FOLLOWERS = new Set(["damage", "healing"]);
 
 /** Register the hook. Called during init. */
 export function registerRetarget() {
   Hooks.on("dnd5e.renderChatMessage", (message, html) => {
-    if ( !isOn("retargetRolls") || !TYPES.has(message.type) || !message.isOwner ) return;
+    if ( !isOn("retargetRolls") || (message.type !== "attack") || !message.isOwner ) return;
     if ( !message.isContentVisible ) return;
     try {
-      if ( message.type === "attack" ) addToAttackCard(message, html);
-      // The damage tray builds its target row once it is placed on the page, so wait for that.
-      else setTimeout(() => addToTrays(message, html), 0);
+      addToAttackCard(message, html);
     } catch(err) {
-      console.warn("DnD5e QoL | Could not add the change target button.", err);
+      console.warn("DnD5e QoL | Could not set up changing targets.", err);
     }
   });
 }
 
-/** Attack cards: add the button to the targets row, adding the row if the attack had no targets. */
+/** Make the bullseye icon on the targets row clickable, adding the row if the attack had no targets. */
 function addToAttackCard(message, html) {
   const content = html.querySelector(".message-content");
   if ( !content ) return;
@@ -37,7 +41,7 @@ function addToAttackCard(message, html) {
     row = document.createElement("section");
     row.classList.add("icon-row");
     row.innerHTML = `
-      <i class="fa-fw fa-solid fa-bullseye" aria-label="Targets"></i>
+      <i class="fa-fw fa-solid fa-bullseye"></i>
       <ul class="unlist targets pills">
         <li class="none pill target transparent">${game.i18n.localize("DND5E.Tokens.NoTargets")}</li>
       </ul>`;
@@ -45,43 +49,49 @@ function addToAttackCard(message, html) {
     if ( card ) card.after(row);
     else content.prepend(row);
   }
-  row.append(makeButton(message));
-}
-
-/** Damage and healing cards: add the button to the target row inside the apply tray. */
-function addToTrays(message, html) {
-  for ( const recorded of html.querySelectorAll("recorded-targets") ) {
-    const row = recorded.querySelector(":scope > .icon-row");
-    if ( !row || row.querySelector(".dst-retarget") ) continue;
-    row.append(makeButton(message));
-  }
-}
-
-/** Build the button. */
-function makeButton(message) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.classList.add("icon", "dst-retarget");
-  button.dataset.tooltip = "Change Targets to Your Current Targets";
-  button.ariaLabel = "Change Targets";
-  button.innerHTML = '<i class="fa-solid fa-crosshairs" inert></i>';
-  button.addEventListener("click", event => {
+  const icon = row.querySelector(":scope > i.fa-bullseye");
+  if ( !icon ) return;
+  icon.classList.add("dst-retarget");
+  icon.role = "button";
+  icon.tabIndex = 0;
+  icon.ariaLabel = "Change Targets";
+  icon.dataset.tooltip = "Change to Your Current Targets";
+  const run = event => {
     event.preventDefault();
     event.stopPropagation();
     retarget(message);
+  };
+  icon.addEventListener("click", run);
+  icon.addEventListener("keydown", event => {
+    if ( (event.key === "Enter") || (event.key === " ") ) run(event);
   });
-  return button;
 }
 
-/** Replace the message's stored targets with the user's current targets. */
+/** Replace (or clear, with nothing targeted) the attack's stored targets, and those of its use card and damage cards, with the user's current targets. */
 async function retarget(message) {
   const TargetsField = dnd5e.dataModels.chatMessage.fields.TargetsField;
+  // With nothing targeted this clears the targets.
   const targets = TargetsField.getDescriptors();
-  if ( !targets.length ) {
-    ui.notifications.warn("Target one or more tokens first, then click the button again.");
-    return;
+
+  const messages = [message];
+  const originId = idOf(message.system.origin);
+  if ( originId ) {
+    const origin = game.messages.get(originId);
+    if ( origin?.system?.targets ) messages.push(origin);
+    for ( const other of game.messages ) {
+      if ( FOLLOWERS.has(other.type) && (idOf(other.system.origin) === originId) ) messages.push(other);
+    }
   }
-  // Show the new targets in the damage tray, rather than whatever tokens are selected.
-  message._targetState = { checked: new Map(), mode: "targeted" };
-  await message.update({ "system.targets": targets });
+
+  for ( const msg of messages ) {
+    if ( !msg.isOwner ) continue;
+    // Show the new targets in damage trays, rather than whatever tokens are selected.
+    msg._targetState = { checked: new Map(), mode: "targeted" };
+    await msg.update({ "system.targets": targets });
+  }
+}
+
+/** The id of a stored origin message, whether it is held as the message or as its id. */
+function idOf(origin) {
+  return (typeof origin === "string") ? origin : origin?.id;
 }

@@ -212,9 +212,12 @@ body.dst-colorblind * {
 /*  Change Target After Roll                    */
 /* -------------------------------------------- */
 
-:is(.chat-log, .chat-popout, #chat-notifications) .message .icon-row > button.dst-retarget {
-  flex: 0 0 auto;
-  inline-size: var(--button-size, 24px);
+:is(.chat-log, .chat-popout, #chat-notifications) .message .icon-row > i.dst-retarget {
+  cursor: pointer;
+  border-radius: 50%;
+}
+:is(.chat-log, .chat-popout, #chat-notifications) .message .icon-row > i.dst-retarget:is(:hover, :focus-visible) {
   color: var(--dnd5e-color-gold);
-  font-size: var(--font-size-11);
+  text-shadow: 0 0 6px var(--dnd5e-color-gold);
+  outline: none;
 }
