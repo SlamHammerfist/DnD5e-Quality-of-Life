@@ -207,3 +207,14 @@ body.dst-colorblind * {
 .roll-configuration .dst-adv-reason.dst-adv-disadvantage {
   --dst-adv-color: var(--dnd5e-color-failure, #aa0200);
 }
+
+/* -------------------------------------------- */
+/*  Change Target After Roll                    */
+/* -------------------------------------------- */
+
+:is(.chat-log, .chat-popout, #chat-notifications) .message .icon-row > button.dst-retarget {
+  flex: 0 0 auto;
+  inline-size: var(--button-size, 24px);
+  color: var(--dnd5e-color-gold);
+  font-size: var(--font-size-11);
+}

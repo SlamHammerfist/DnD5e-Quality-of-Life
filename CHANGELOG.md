@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.6.0
+
+- GM Change Target After Roll setting (on by default): a crosshairs button on attack, damage and
+  healing chat cards replaces the card's targets with your current targets. Attack cards re-check
+  hit or miss against the new targets' AC, and the damage tray's Targeted mode applies to them.
+
 ## 2.5.0
 
 - Label Roll Bonuses now works on every roll, including damage, healing and recharge rolls, not

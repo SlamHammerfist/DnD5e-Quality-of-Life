@@ -18,6 +18,7 @@ on/off switch in **Configure Settings → DnD5e QoL**, and **Enable Module** tur
 | Find Familiar Browser | Find Familiar and Wild Companion open the compendium browser with the 2024 Monster Manual ticked. |
 | Sort Spells by Level | Spell results in the compendium browser are grouped by level with a header for each. |
 | Sort Monsters by CR | Monster results in the compendium browser are grouped by Challenge Rating with a header for each. |
+| Change Target After Roll | A crosshairs button on attack, damage and healing chat cards swaps the card's targets for your current targets. Attacks re-check hit or miss; the damage tray applies to the new targets. Shown to the roller and the GM. |
 
 ## Personal settings (each player chooses)
 

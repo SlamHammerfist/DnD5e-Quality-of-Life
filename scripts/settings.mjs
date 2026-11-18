@@ -112,6 +112,12 @@ const SETTINGS = {
     default: true,
     onChange: () => refreshBrowsers()
   },
+  retargetRolls: {
+    name: "Change Target After Roll",
+    hint: "Adds a crosshairs button to the targets row of attack, damage and healing chat cards. Target the right tokens and click it to swap the card's targets for them, without rolling again. Attack cards re-check hit or miss against the new targets, and the damage tray applies to them. Only the person who rolled and the GM see the button.",
+    scope: "world",
+    default: true
+  },
   advantageHighlight: {
     name: "Advantage Highlight",
     hint: "In the d20 roll dialog, the Advantage, Normal or Disadvantage button that applies stays highlighted (green, gold or red; blue and orange in Color Blind Mode) even when you click into another field, and a line above the buttons names the reason, e.g. \"Disadvantage: Poisoned, Chain Mail\".",
