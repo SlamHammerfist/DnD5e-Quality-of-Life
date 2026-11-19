@@ -4,9 +4,8 @@
  * "Enable Module" master switch turns them all off at once.
  *
  * This file only starts things up. Each feature lives in its own file:
- *   constants.mjs         shared constants (module id, chat button list)
- *   settings.mjs          settings, the master switch, page-wide CSS switches, button label CSS
- *   button-labels.mjs     the Configure Labels dialog
+ *   constants.mjs         shared constants (module id, CSS prefix)
+ *   settings.mjs          settings, the master switch, page-wide CSS switches
  *   roll-labels.mjs       Label Roll Bonuses
  *   coin-drops.mjs        NPC Coin Drops
  *   auto-defeat.mjs       Auto Kill NPCs
@@ -23,7 +22,7 @@
  * Hide Chat Enrichment Menu and Remove Electrum are CSS only (see the stylesheet).
  */
 
-import { applyBodyClasses, applyButtonLabels, registerSettings } from "./settings.mjs";
+import { applyBodyClasses, registerSettings } from "./settings.mjs";
 import { registerRollLabels } from "./roll-labels.mjs";
 import { registerCoinDrops } from "./coin-drops.mjs";
 import { registerAutoDefeat } from "./auto-defeat.mjs";
@@ -68,6 +67,5 @@ Hooks.once("init", () => {
 
 Hooks.once("ready", () => {
   applyBodyClasses();
-  applyButtonLabels();
   safely("Color Blind Mode", applyColorBlind);
 });

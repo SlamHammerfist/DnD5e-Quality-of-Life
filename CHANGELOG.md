@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.7.0
+
+- Removed the Chat Card Button Labels setting and its Configure Labels dialog: dnd5e now labels
+  chat card buttons itself.
+
 ## 2.6.0
 
 - GM Change Target After Roll setting (on by default): click the bullseye icon on an attack chat

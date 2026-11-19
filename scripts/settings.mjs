@@ -5,8 +5,7 @@
  * "user" scope so they follow each person to any computer they log in from.
  */
 
-import { BUTTON_ACTIONS, MODULE } from "./constants.mjs";
-import { ButtonLabelsConfig } from "./button-labels.mjs";
+import { MODULE } from "./constants.mjs";
 import { applyColorBlind } from "./colorblind.mjs";
 
 /** Re-render every open actor sheet and container sheet so a changed setting shows straight away. */
@@ -124,13 +123,6 @@ const SETTINGS = {
     scope: "user",
     default: true
   },
-  buttonLabels: {
-    name: "Chat Card Button Labels",
-    hint: "Shows text labels (Attack, Damage, Saving Throw, etc.) next to the icons on dnd5e 6.0 chat card action buttons.",
-    scope: "user",
-    default: true,
-    onChange: () => applyButtonLabels()
-  },
   colorBlind: {
     name: "Color Blind Mode",
     hint: "Swaps red and green for colour-blind-safe blue and orange: hits, misses, crits and fumbles, successes and failures, health bars on sheets and tokens, and damage and healing colours. Blue means good, orange means bad.",
@@ -182,27 +174,9 @@ const SETTINGS = {
 
 /** Register settings. Called during init. */
 export function registerSettings() {
-  game.settings.registerMenu(MODULE, "buttonLabelsMenu", {
-    name: "Chat Card Button Labels",
-    label: "Configure Labels",
-    hint: "Choose which chat card buttons show a text label. Only applies while Chat Card Button Labels is enabled.",
-    icon: "fa-solid fa-tags",
-    type: ButtonLabelsConfig,
-    restricted: false
-  });
-
   for ( const [key, data] of Object.entries(SETTINGS) ) {
     game.settings.register(MODULE, key, { ...data, config: true, type: Boolean });
   }
-
-  // Which chat card buttons get a label. Personal, changed from the Configure Labels dialog.
-  game.settings.register(MODULE, "buttonLabelActions", {
-    scope: "user",
-    config: false,
-    type: Object,
-    default: Object.fromEntries(Object.keys(BUTTON_ACTIONS).map(k => [k, true])),
-    onChange: () => applyButtonLabels()
-  });
 
   // Item sections you have collapsed, so they stay collapsed. Personal.
   game.settings.register(MODULE, "collapsedSections", {
@@ -225,51 +199,4 @@ export function applyBodyClasses() {
   body.toggle("dst-hide-prices", player && isOn("hidePrices"));
   body.toggle("dst-hide-chat-menu", player && isOn("hideChatMenu"));
   body.toggle("dst-no-electrum", isOn("removeElectrum"));
-}
-
-/**
- * Write the CSS that shows a text label on the chosen chat card buttons. Done with a style tag
- * so cards keep their labels however and whenever they are redrawn.
- */
-export function applyButtonLabels() {
-  const id = "dst-button-labels";
-  let style = document.getElementById(id);
-  if ( !style ) {
-    style = document.createElement("style");
-    style.id = id;
-    document.head.append(style);
-  }
-  if ( !isOn("buttonLabels") ) {
-    style.textContent = "";
-    return;
-  }
-  const chosen = game.settings.get(MODULE, "buttonLabelActions") ?? {};
-  const actions = Object.keys(BUTTON_ACTIONS).filter(a => chosen[a] !== false);
-  if ( !actions.length ) {
-    style.textContent = "";
-    return;
-  }
-  const match = actions.map(a => `[data-action="${a}"], [data-forward-action="${a}"]`).join(", ");
-  const button = `:is(.chat-log, .chat-popout) .message .icon-row button.icon:is(${match})`;
-  style.textContent = `
-    ${button} {
-      inline-size: auto;
-      min-inline-size: var(--button-size);
-      padding-inline: 6px !important;
-      gap: 4px;
-      display: inline-flex;
-      align-items: center;
-    }
-    ${button}::after {
-      content: attr(aria-label);
-      font-family: var(--dnd5e-font-roboto, sans-serif) !important;
-      font-size: 12px !important;
-      font-variant: normal !important;
-      font-weight: normal !important;
-      line-height: 1;
-      letter-spacing: normal !important;
-      text-transform: none !important;
-      white-space: nowrap;
-    }
-  `;
 }

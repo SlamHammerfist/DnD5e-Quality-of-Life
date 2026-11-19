@@ -160,16 +160,6 @@ body.dst-colorblind * {
 }
 
 /* -------------------------------------------- */
-/*  Configure Labels dialog                     */
-/* -------------------------------------------- */
-
-.dst-button-labels-config .dst-quick-pick {
-  display: flex;
-  gap: 6px;
-  margin-block-end: 6px;
-}
-
-/* -------------------------------------------- */
 /*  Advantage Highlight                         */
 /*  Uses dnd5e's success/failure colours, so    */
 /*  Color Blind Mode turns them blue/orange.    */
